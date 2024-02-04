@@ -49,10 +49,6 @@ public class AptDealDto {
     @XmlElement(name = "지번")
     private String jibun;
 
-    public String getJibun() {
-        return Optional.ofNullable(jibun).orElse("");
-    }
-
     @XmlElement(name = "지역코드")
     private String regionalCode;
 
@@ -60,8 +56,23 @@ public class AptDealDto {
     private Integer floor;
 
     @XmlElement(name = "해제사유발생일")
-    private String dealCanceledDate;
+    private String dealCanceledDate;    // 21.07.30
 
-    @XmlElement(name = "해제여부")
+    public LocalDate getDealCanceledDate() {
+        if (StringUtils.isBlank(dealCanceledDate)) {
+            return null;
+        }
+        return LocalDate.parse(dealCanceledDate.trim(), DateTimeFormatter.ofPattern("yy.MM.dd"));
+    }
+
+    @XmlElement(name = "해제여부")  // 0
     private String dealCanceled;
+
+    public boolean isDealCanceled() {
+        return "O".equals(dealCanceled.trim());
+    }
+
+    public LocalDate getDealDate() {
+        return LocalDate.of(year, month, day);
+    }
 }
