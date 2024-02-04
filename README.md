@@ -60,4 +60,9 @@ commit
 
 > --spring.batch.job.names=aptDealInsertJob -yearMonth=2024-01
 
-### ### Ch 03. Batch 프로그램 개발 - 18. 실거래가 배치 - Conditional Flow Step
+### Ch 03. Batch 프로그램 개발 - 18. 실거래가 배치 - Conditional Flow Step
+
+>--spring.batch.job.names=aptDealInsertJob
+
+### Ch 03. Batch 프로그램 개발 - 19. 실거래가 배치 - Tasklet 클래스로 생성하기
+
