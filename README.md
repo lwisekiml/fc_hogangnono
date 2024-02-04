@@ -33,3 +33,14 @@
 ### Ch 03. Batch 프로그램 개발 - 10. 실거래가 배치 - API 응답 ItemReader
 
 ### Ch 03. Batch 프로그램 개발 - 11. 실거래가 배치 - JobParameter로 API 호출
+
+### Ch 03. Batch 프로그램 개발 - 12. 실거래가 배치 - CompositeJobParametersValidator
+
+>--spring.batch.job.names=aptDealInsertJob -lawdCd=41135 -yearMonth=202107
+
+올바른 날짜 형식이 아닙니다. yyyy-MM 형식이어야 합니다.
+
+>--spring.batch.job.names=aptDealInsertJob -lawdCd=411350 -yearMonth=2024-01
+
+5자리 문자열이어야 합니다.
+
