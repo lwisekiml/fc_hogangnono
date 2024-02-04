@@ -23,3 +23,8 @@
 ### Ch 03. Batch 프로그램 개발 - 06. 실거래가 배치 - API 응답 분석
 
 ### Ch 03. Batch 프로그램 개발 - 07. 실거래가 배치 - XML 파일 ItemReader
+
+### Ch 03. Batch 프로그램 개발 - 08. 실거래가 배치 - Job, Step 완성하기
+실행 전 Edit Configuration... -> Program arguments
+>--spring.batch.job.names=aptDealInsertJob -filePath=apartment-api-response.xml
+
