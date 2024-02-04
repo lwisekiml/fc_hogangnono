@@ -31,3 +31,5 @@
 ### Ch 03. Batch 프로그램 개발 - 09. 실거래가 배치 - StatEventItemReader 부가설명
 
 ### Ch 03. Batch 프로그램 개발 - 10. 실거래가 배치 - API 응답 ItemReader
+
+### Ch 03. Batch 프로그램 개발 - 11. 실거래가 배치 - JobParameter로 API 호출
