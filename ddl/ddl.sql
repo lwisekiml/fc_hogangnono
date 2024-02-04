@@ -87,3 +87,36 @@ select * from lawd where exist = 1 and lawd_cd like "%00000000";
 
 ---------------------------------------
 select * from apt_deal ad left join apt a on a.apt_id = ad.apt_id order by ad.apt_deal_id desc;
+
+---------------------------------------
+-- 2021-07 전국 아파트 실거래가
+-- 총 거래 수 : 55752
+-- 거래가 해지된 건 : 1247건
+select count(*) from hous_batch.apt_deal where deal_canceled = 1;
+-- 가장 저렴한 가격으로 거래된 아파트 : 950만원
+select * from apt_deal ad left join apt a on a.apt_id = ad.apt_id
+order by ad.deal_amount desc;
+-- 가장 비싼 가격으로 거래된 아파트 : 100억원
+select * from apt_deal ad left join apt a on a.apt_id = ad.apt_id
+order by ad.deal_amount asc;
+-- 서울에서 가장 저렴한 가격으로 거래된 아파트 : 8000만원
+select * from apt_deal ad left join apt a on a.apt_id = ad.apt_id
+where a.gu_lawd_cd like "11%"
+order by ad.deal_amount asc;
+-- 서울에서 가장 비싼 가격으로 거래된 아파트 : 100억원
+select * from apt_deal ad left join apt a on a.apt_id = ad.apt_id
+where a.gu_lawd_cd like "11%"
+order by ad.deal_amount desc;
+-- 서울에서 거래된 평균 아파트 가격 : 10억 4440만원
+select avg(ad.deal_amount) from apt_deal ad left join apt a on a.apt_id = ad.apt_id
+where a.gu_lawd_cd like "11%";
+-- 전국에서 거래된 평균 아파트 가격 : 3억 8천 334만원
+select avg(ad.deal_amount) from apt_deal ad left join apt a on a.apt_id = ad.apt_id;
+-- 제주도에서 거래된 평균 아파트 가격 : 3억 613만원
+select avg(ad.deal_amount) from apt_deal ad left join apt a on a.apt_id = ad.apt_id;
+where a.gu_lawd_cd like "50%";
+
+
+
+
+
