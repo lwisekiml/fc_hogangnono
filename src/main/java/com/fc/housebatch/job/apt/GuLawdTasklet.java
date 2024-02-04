@@ -41,6 +41,9 @@ public class GuLawdTasklet implements Tasklet {
 
         itemCount--;
 
+        // getJobExecutionContext()을 보면 수정불가라 아래 코드는 에러 발생
+//        chunkContext.getStepContext().getJobExecutionContext().put(KEY_GU_LAWD_CD, guLawdCdList.get(itemCount));
+
         executionContext.put(KEY_GU_LAWD_CD, guLawdCdList.get(itemCount));
         executionContext.putInt(KEY_ITEM_COUNT, itemCount);
 

@@ -81,7 +81,7 @@ public class AptDealInsertJobConfig {
     @JobScope
     @Bean
     public Tasklet contextPrintTasklet(
-            @Value("#{jobExecutionContext['guLawdCd']}") String guLawdCd
+            @Value("#{jobExecutionContext['guLawdCd']}") String guLawdCd /* 실행 될때 마다 guLawdCd값을 가져온다.*/
     ) {
         return ((contribution, chunkContext) -> {
             System.out.println("[contextPrintStep] guLawdCd = " + guLawdCd);
