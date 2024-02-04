@@ -72,4 +72,6 @@ commit
 
 ### Ch 03. Batch 프로그램 개발 - 22. 실거래가 배치 - upsert 구현
 
+### Ch 03. Batch 프로그램 개발 - 23. 실거래가 배치 - 잡 실행하기
+>--spring.batch.job.names=aptDealInsertJob -yearMonth=2024-01
 
