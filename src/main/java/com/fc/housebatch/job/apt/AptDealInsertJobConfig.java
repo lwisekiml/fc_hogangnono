@@ -78,6 +78,7 @@ public class AptDealInsertJobConfig {
     public ItemWriter<AptDealDto> aptDealWriter() {
         return items -> {
             items.forEach(System.out::println);
+            System.out.println("============ Writing Completed ============"); // 10개 출력되는 것 확인
         };
     }
 }

@@ -28,3 +28,4 @@
 실행 전 Edit Configuration... -> Program arguments
 >--spring.batch.job.names=aptDealInsertJob -filePath=apartment-api-response.xml
 
+### Ch 03. Batch 프로그램 개발 - 09. 실거래가 배치 - StatEventItemReader 부가설명
