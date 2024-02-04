@@ -116,6 +116,11 @@ select avg(ad.deal_amount) from apt_deal ad left join apt a on a.apt_id = ad.apt
 select avg(ad.deal_amount) from apt_deal ad left join apt a on a.apt_id = ad.apt_id;
 where a.gu_lawd_cd like "50%";
 
+---------------------------------------
+INSERT INTO `house_batch`.`apt_notification` (`apt_notification`, `email`, `gu_lawd_cd`, `enabled`, `created_at`, `updated_at`) VALUES ('1', 'spring@naver.com', '41135', '1', '2021-09-10 17:14:39', '2021-09-10 17:14:39');
+INSERT INTO `house_batch`.`apt_notification` (`apt_notification`, `email`, `gu_lawd_cd`, `enabled`, `created_at`, `updated_at`) VALUES ('2', 'spring-batch-student@naver.com', '11680', '1', '2021-09-10 17:15:41', '2021-09-10 17:15:41');
+INSERT INTO `house_batch`.`apt_notification` (`apt_notification`, `email`, `gu_lawd_cd`, `enabled`, `created_at`, `updated_at`) VALUES ('3', 'spring-batch-student@naver.com', '11110', '0', '2021-09-10 17:16:11', '2021-09-10 17:16:11');
+
 
 
 
