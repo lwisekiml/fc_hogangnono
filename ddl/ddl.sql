@@ -54,3 +54,13 @@ CREATE table apt_notification
     constraint uk_email_gulawdcd
         unique (email, gu_lawd_cd)
 );
+
+---------------------------------------
+use house_batch;
+
+select count(*) from house_batch.lawd;
+
+select count(*) from lawd where exist = 0;
+
+select * from lawd where exist = 0 and lawd_dong like "서울특별시%";
+
