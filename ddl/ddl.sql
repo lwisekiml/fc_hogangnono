@@ -64,3 +64,23 @@ select count(*) from lawd where exist = 0;
 
 select * from lawd where exist = 0 and lawd_dong like "서울특별시%";
 
+---------------------------------------
+/* 구 코드 가져오는 쿼리 작성하기 */
+
+select * from lawd;
+
+select distinct lawd_cd from lawd where exist = 1;
+
+select distinct exist from lawd;
+
+select distinct substring(lawd_cd, 1, 5) from lawd where exist = 1 and lawd_cd not like "%00000000";
+-- 시, 도에 관한 코드들을 제거해야 합니다.
+
+select * from lawd where exist = 1 and lawd_cd like "%00000000";
+
+
+/*
+1. lawd_dong '동' 문자열이 포함된 데이터들을 조회 -> 5자리를 사용하면 되지 않을까 (X)
+-> 군 데이터의 경우에는 리나 읍으로 끝나기 때문에 동이 들어간 데이터만 가져오면 불러와지지 않는다.
+2. distinct 사용
+*/
