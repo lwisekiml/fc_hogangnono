@@ -84,3 +84,6 @@ select * from lawd where exist = 1 and lawd_cd like "%00000000";
 -> 군 데이터의 경우에는 리나 읍으로 끝나기 때문에 동이 들어간 데이터만 가져오면 불러와지지 않는다.
 2. distinct 사용
 */
+
+---------------------------------------
+select * from apt_deal ad left join apt a on a.apt_id = ad.apt_id order by ad.apt_deal_id desc;

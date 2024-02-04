@@ -49,6 +49,10 @@ public class AptDealDto {
     @XmlElement(name = "지번")
     private String jibun;
 
+    public String getJibun() {
+        return Optional.ofNullable(jibun).orElse("");
+    }
+
     @XmlElement(name = "지역코드")
     private String regionalCode;
 

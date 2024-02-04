@@ -75,3 +75,6 @@ commit
 ### Ch 03. Batch 프로그램 개발 - 23. 실거래가 배치 - 잡 실행하기
 >--spring.batch.job.names=aptDealInsertJob -yearMonth=2024-01
 
+### Ch 03. Batch 프로그램 개발 - 24. 실거래가 배치 - 예측하지 못한 이슈 해결하기
+
+
