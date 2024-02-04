@@ -53,5 +53,8 @@
 ### Ch 03. Batch 프로그램 개발 - 16. 실거래가 배치 - 두 개의 Reader를 어떻게 처리할까
 
 ### Ch 03. Batch 프로그램 개발 - 17. 실거래가 배치 - ExecutionContext 활용
->--spring.batch.job.names=aptDealInsertJob -lawdCd=41135 -yearMonth=2024-0
+중간 commit
+>--spring.batch.job.names=aptDealInsertJob -lawdCd=41135 -yearMonth=2024-01
+commit
+> --spring.batch.job.names=aptDealInsertJob -yearMonth=2024-01
 
