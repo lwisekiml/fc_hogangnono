@@ -19,3 +19,5 @@
 ### Ch 03. Batch 프로그램 개발 - 05. 동 배치 - Service, ItemWriter, 실행
 실행 전 Edit Configuration... -> Program arguments
 >--spring.batch.job.names=lawdInsertJob -filePath=LAWD_CODE.txt
+
+### Ch 03. Batch 프로그램 개발 - 06. 실거래가 배치 - API 응답 분석
