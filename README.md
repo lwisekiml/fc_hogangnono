@@ -81,3 +81,6 @@ commit
 
 ### Ch 03. Batch 프로그램 개발 - 26. 알림 배치 - ItemReader
 
+### Ch 03. Batch 프로그램 개발 - 27. 알림 배치 - ItemProcessor
+>--spring.batch.job.names=aptNotificationJob -dealDate=2024-01-02
+

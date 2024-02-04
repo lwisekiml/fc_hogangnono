@@ -121,6 +121,11 @@ INSERT INTO `house_batch`.`apt_notification` (`apt_notification`, `email`, `gu_l
 INSERT INTO `house_batch`.`apt_notification` (`apt_notification`, `email`, `gu_lawd_cd`, `enabled`, `created_at`, `updated_at`) VALUES ('2', 'spring-batch-student@naver.com', '11680', '1', '2021-09-10 17:15:41', '2021-09-10 17:15:41');
 INSERT INTO `house_batch`.`apt_notification` (`apt_notification`, `email`, `gu_lawd_cd`, `enabled`, `created_at`, `updated_at`) VALUES ('3', 'spring-batch-student@naver.com', '11110', '0', '2021-09-10 17:16:11', '2021-09-10 17:16:11');
 
+---------------------------------------
+select * from apt_deal where deal_canceled = 0 and deal_date = "2021-07-01";
+
+select * from apt_deal left join apt a on a.apt_id = ad.apt_id
+where gu_lawd_cs = "11680" and ad.deal_date = "2021-07-01";
 
 
 
