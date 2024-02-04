@@ -3,6 +3,7 @@ package com.fc.housebatch.job.apt;
 import com.fc.housebatch.adapter.ApartmentApiResource;
 import com.fc.housebatch.core.dto.AptDealDto;
 import com.fc.housebatch.core.repository.LawdRepository;
+import com.fc.housebatch.core.service.AptDealService;
 import com.fc.housebatch.job.validator.YearMonthParameterValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,13 +38,13 @@ public class AptDealInsertJobConfig {
     @Bean
     public Job aptDealInsertJob(
             Step guLawdCdStep,
-            Step contextPrintStep
+            Step aptDealInsertStep
     ) {
         return jobBuilderFactory.get("aptDealInsertJob")
                 .incrementer(new RunIdIncrementer())
                 .validator(new YearMonthParameterValidator())
                 .start(guLawdCdStep)
-                .on("CONTINUABLE").to(contextPrintStep).next(guLawdCdStep)
+                .on("CONTINUABLE").to(aptDealInsertStep).next(guLawdCdStep)
                 .from(guLawdCdStep)
                 .on("*").end()
                 .end()
@@ -129,9 +130,9 @@ public class AptDealInsertJobConfig {
 
     @StepScope
     @Bean
-    public ItemWriter<AptDealDto> aptDealWriter() {
+    public ItemWriter<AptDealDto> aptDealWriter(AptDealService aptDealService) {
         return items -> {
-            items.forEach(System.out::println);
+            items.forEach(aptDealService::upsert);
             System.out.println("============ Writing Completed ============"); // 10개 출력되는 것 확인
         };
     }
