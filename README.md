@@ -83,8 +83,9 @@ commit
 
 ### Ch 03. Batch 프로그램 개발 - 27. 알림 배치 - ItemProcessor
 >--spring.batch.job.names=aptNotificationJob -dealDate=2024-01-02
-DB에 데이터가 없어서 그런지 에러 발생 - 확인 필요
+DB에 데이터가 없어서 그런지 에러 발생 - 27, 28은 확인 필요
 
 ### Ch 03. Batch 프로그램 개발 - 28. 알림 배치 - ItemWriter
 
+### Ch 03. Batch 프로그램 개발 - 29. 동 배치 테스트
 
