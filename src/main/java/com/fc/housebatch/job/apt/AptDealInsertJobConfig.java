@@ -8,10 +8,7 @@ import com.fc.housebatch.job.validator.LawdCdParameterValidator;
 import com.fc.housebatch.job.validator.YearMonthParameterValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParametersValidator;
-import org.springframework.batch.core.Step;
-import org.springframework.batch.core.StepExecution;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -47,15 +44,18 @@ public class AptDealInsertJobConfig {
     @Bean
     public Job aptDealInsertJob(
             Step guLawdCdStep,
-            Step contextPrintStep,
-            Step aptDealInsertStep
+            Step contextPrintStep
+//            Step aptDealInsertStep
     ) {
         return jobBuilderFactory.get("aptDealInsertJob")
                 .incrementer(new RunIdIncrementer())
                 .validator(aptDealJobParameterValidator())
                 .start(guLawdCdStep)
-                .next(contextPrintStep)
-                .next(aptDealInsertStep)
+                .on("CONTINUABLE").to(contextPrintStep).next(guLawdCdStep)
+                .from(guLawdCdStep)
+                .on("*").end()
+                .end()
+//                .next(aptDealInsertStep)
                 .build();
     }
 
@@ -75,6 +75,12 @@ public class AptDealInsertJobConfig {
                 .build();
     }
 
+    /**
+     * Executioncontext에 저장할 데이터
+     * 1. guLawdCd - 구 코드 -> 다음 스텝에서 활용할 값
+     * 2. gulLawdCdList - 구 코드 리스트
+     * 3. itemCount - 남아있는 구 코드의 갯수
+     */
     @StepScope
     @Bean
     public Tasklet guLawdCdTasklet() {
@@ -82,9 +88,31 @@ public class AptDealInsertJobConfig {
             StepExecution stepExecution = chunkContext.getStepContext().getStepExecution();
             ExecutionContext executionContext = stepExecution.getJobExecution().getExecutionContext();
 
-            List<String> guLawdCds = lawdRepository.findDistinctGuLawdCd();
-            executionContext.putString("guLawdCd", guLawdCds.get(0));
+            // 데이터가 있으면 다음 스텝을 실행하도록하고, 데이터가 없으면 종료되도록 한다.
+            // 데이터가 있으면 -> CONTINUABLE
+            List<String> guLawdCdList;
+            if (!executionContext.containsKey("guLawdCdList")) {
+                guLawdCdList = lawdRepository.findDistinctGuLawdCd();
+                executionContext.put("guLawdCdList", guLawdCdList);
+                executionContext.putInt("itemCount", guLawdCdList.size());
+            } else {
+                guLawdCdList = (List<String>) executionContext.get("guLawdCdList");
+            }
 
+            Integer itemCount = executionContext.getInt("itemCount");
+
+            if (itemCount == 0) {
+                contribution.setExitStatus(ExitStatus.COMPLETED);
+                return RepeatStatus.FINISHED;
+            }
+
+            itemCount--;
+
+            String guLawdCd = guLawdCdList.get(itemCount);
+            executionContext.putString("guLawdCd", guLawdCd);
+            executionContext.putInt("itemCount", itemCount);
+
+            contribution.setExitStatus(new ExitStatus("CONTINUABLE"));
             return RepeatStatus.FINISHED;
         };
     }
