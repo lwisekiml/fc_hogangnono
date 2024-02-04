@@ -30,6 +30,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.batch:spring-batch-test'
 
+	// Ch 03. Batch 프로그램 개발 - 07. 실거래가 배치 - XML 파일 ItemReader
 	implementation 'org.springframework:spring-oxm'
 	implementation 'javax.xml.bind:jaxb-api:2.2.11'
 	implementation 'com.sun.xml.bind:jaxb-core:2.2.11'

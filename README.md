@@ -21,3 +21,5 @@
 >--spring.batch.job.names=lawdInsertJob -filePath=LAWD_CODE.txt
 
 ### Ch 03. Batch 프로그램 개발 - 06. 실거래가 배치 - API 응답 분석
+
+### Ch 03. Batch 프로그램 개발 - 07. 실거래가 배치 - XML 파일 ItemReader
